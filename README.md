@@ -144,6 +144,20 @@ Specifically:
 
 This strategy provides a fair approximation of cross-validation while maintaining efficiency for large-scale ST datasets.
 
+##  Parameter Setting
+
+```
+epochs = 50
+batch_size = 20
+lr = 0.001
+runs = 10
+gcn_depth = 2  # conv1, conv2 in model.py
+hidden_dim = 128
+pca_dim = 200
+random_seeds = range(10)
+```
+
+
 ---
 
 ## Citation
