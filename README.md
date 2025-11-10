@@ -60,10 +60,10 @@ python main.py
 
 #### Optional configuration inside `main.py`:
 
-* `epochs`: number of training epochs per run (default 50)
-* `batch_size`: number of samples per batch (default 20)
-* `lr`: learning rate (default 0.001)
-* `runs`: repeated random seed experiments (default 10)
+* `epochs`: number of training epochs per run 
+* `batch_size`: number of samples per batch
+* `lr`: learning rate 
+* `runs`: repeated random seed experiments 
 
 You can modify these directly in `main.py`:
 
@@ -126,17 +126,25 @@ Start Running 15_processed_all
 [Run 0] Test ARI: 0.812 | NMI: 0.784
 Results saved to result.json
 ```
-## Outputs
-- Trained models saved in `saved_models/`
-- Intermediate subgraph representations saved in `saved_graph/`
-- Final clustering results and metrics saved in `result.json`
 
 ## Datasets
 - LIBD Human Dorsolateral Prefrontal Cortex (DL: http://research.libd.org/spatialLIBD/
 - Human Breast Cancer: https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-1-0
 - Mouse Brain Tissue: https://www.10xgenomics.com/datasets/mouse-brain-serial-section-1-sagittal-anterior-1-standard-1-1-0
 
+##  Cross-Validation Strategy
 
+To ensure robustness and generalizability across different tissue sections and data distributions, GatorST employs a **multi-run cross-validation approach**.
+
+Specifically:
+
+* For each dataset, the data loader (`loader_construction`) partitions samples into **train**, **validation**, and **test** sets using fixed proportions (80% / 10% / 10%).
+* This process is **repeated across 10 random seeds** (`for run in range(10)`) to assess consistency.
+* Each run reinitializes the model and randomizes data splits, ensuring that results reported in `result.json` reflect **average and variance** across independent splits.
+
+This strategy provides a fair approximation of cross-validation while maintaining efficiency for large-scale ST datasets.
+
+---
 
 ## Citation
 
