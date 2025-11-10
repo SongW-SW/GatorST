@@ -51,3 +51,12 @@ Ensure your `.h5ad` data files are located in the `data/` directory.
 
 
 ## Citation
+
+```
+@article{wang2025gatorst,
+  title={GatorST: A Versatile Contrastive Meta-Learning Framework for Spatial Transcriptomic Data Analysis},
+  author={Wang, Song and Liu, Yuxi and Zhang, Zhenhao and Ma, Qin and Song, Qianqian and Bian, Jiang},
+  journal={bioRxiv},
+  year={2025}
+}
+```
