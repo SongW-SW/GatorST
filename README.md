@@ -128,11 +128,7 @@ Results saved to result.json
 ```
 
 ## Datasets
-- LIBD Human Dorsolateral Prefrontal Cortex: http://research.libd.org/spatialLIBD/
-- Human Breast Cancer: https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-1-0
-- Mouse Brain Tissue: https://www.10xgenomics.com/datasets/mouse-brain-serial-section-1-sagittal-anterior-1-standard-1-1-0
-
-The LIBD human dorsolateral prefrontal cortex (DLPFC) dataset is obtained using the 10x Visium platform (http://research.libd.org/spatialLIBD/); the human breast cancer dataset and the mouse brain tissue dataset are both obtained from the 10x Genomics Data Repository.
+The spatial transcriptomics datasets analyzed in this study are publicly available from the following sources: the LIBD human dorsolateral prefrontal cortex (DLPFC) dataset, which was obtained using the 10x Visium platform (http://research.libd.org/spatialLIBD/); the human breast cancer dataset (https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-1-0) and the mouse brain tissue dataset (https://www.10xgenomics.com/datasets/mouse-brain-serial-section-1-sagittal-anterior-1-standard-1-1-0), both obtained from the 10x Genomics Data Repository.
 
 ##  Cross-Validation Strategy
 
