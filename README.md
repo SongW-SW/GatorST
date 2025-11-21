@@ -167,7 +167,6 @@ lr = 0.001
 runs = 10
 gcn_depth = 2  # conv1, conv2 in model.py
 hidden_dim = 128
-pca_dim = 200
 random_seeds = range(10)
 ```
 
