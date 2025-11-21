@@ -33,13 +33,29 @@
 ### **1. Prepare your input data**
 
 Place your **.h5ad** spatial transcriptomics datasets in the `./data/` directory.
+
 Each `.h5ad` file should contain:
 
-* `adata.X`: Gene expression matrix
-* `adata.obs`: Spot/cell-level metadata
-* `adata.obsm["spatial"]`: Spatial coordinates
+* **`adata.X`** – Gene expression matrix (dense or sparse; will be converted to dense and PCA-reduced to 200D)
+* **`adata.obs`** – Cell/spot metadata.
+  The loader automatically searches typical label fields:
 
-Example:
+  ```
+  ['Cluster', 'cluster', 'region', 'layer_guess']
+  ```
+
+  and maps them to integer class indices. Unmatched labels are assigned an "others" class.
+* **`adata.obsm["spatial"]`** – Spatial coordinates (N × 2 or N × 3)
+
+The pipeline will automatically:
+
+* Construct a **cosine similarity graph** by linking top-k similar neighbors (default degree: 3)
+* Extract **2-hop subgraphs** per cell with node remapping and edge lists
+* Cache all graph data into `./saved_graph/`
+* Split into **train / validation / test**
+* Produce PyTorch loaders with batched subgraphs
+
+Example dataset folder:
 
 ```bash
 data/
