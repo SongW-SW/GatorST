@@ -155,8 +155,11 @@ pca_dim = 200
 random_seeds = range(10)
 ```
 
+To reproduce the results in an end-to-end manner, execute the main script to train and evaluate across datasets:
 
----
+```bash
+python main.py
+```
 
 ## Citation
 
