@@ -67,8 +67,11 @@ python main.py
 
 * `epochs`: number of training epochs per run 
 * `batch_size`: number of samples per batch
-* `lr`: learning rate 
-* `runs`: repeated random seed experiments 
+* `lr`: learning rate
+* `alpha`: balancing the contributions of two losses
+* `N_way`: number of classes to sample
+* `M_shot`: number of support samples per class
+* `Q_query`: number of query samples per class
 
 You can modify these directly in `main.py`:
 
@@ -77,18 +80,10 @@ epochs = 50
 batch_size = 20
 lr = 0.001
 alpha = 0.5
-gamma = 0.2
 N_way = 5
 M_shot = 5
 Q_query = 5
-tau = 1.0 
-```
-
-To run only selected datasets, edit the filtering condition:
-
-```python
-if data_name not in ['151507']:
-    continue
+...
 ```
 
 ---
@@ -101,8 +96,8 @@ After training completed:
 
   ```
   saved_models/
-   ├── 151507_model_run_0.pt
-   ├── 151507_model_run_1.pt
+   ├── 151507_model_run_0
+   ├── 151507_model_run_1
    ...
   ```
 * Evaluation results (accuracy, clustering, etc.): `result.json`
