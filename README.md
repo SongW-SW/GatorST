@@ -1,7 +1,5 @@
-
-
 # GatorST: A Versatile Contrastive Meta-Learning Framework for Spatial Transcriptomic Data Analysis
-
+![model](https://github.com/zhangzh1328/GatorST/blob/main/GatorST.png)
 
 ## Requirements
 - python : 3.9.12
@@ -21,10 +19,10 @@
 ├── main.py            # Main training and evaluation loop
 ├── model.py           # Model architecture and loss functions
 ├── data_loader.py     # Data loading and graph construction utilities
-├── util.py            # Utility functions (seed setup, metrics, dropout)
+├── utils.py            # Utility functions (seed setup, metrics, dropout)
 ├── data/              # Folder for .h5ad input files
 ├── saved_models/      # Folder to save trained models
-├── saved_graph/       # Folder for cached graphs and subgraphs
+├── saved_graphs/       # Folder for cached graphs and subgraphs
 └── result.json        # Evaluation results output
 ```
 
@@ -36,16 +34,16 @@ Place your **.h5ad** spatial transcriptomics datasets in the `./data/` directory
 
 Each `.h5ad` file should contain:
 
-* **`adata.X`** – Gene expression matrix (dense or sparse; will be converted to dense and PCA-reduced to 200D)
-* **`adata.obs`** – Cell/spot metadata.
+* **`adata.X`** – Gene expression matrix
+* **`adata.obs`** – Cell/Spot metadata.
   The loader automatically searches typical label fields:
 
   ```
-  ['Cluster', 'cluster', 'region', 'layer_guess']
+  ['ground_truth']
   ```
 
-  and maps them to integer class indices. Unmatched labels are assigned an "others" class.
-* **`adata.obsm["spatial"]`** – Spatial coordinates (N × 2 or N × 3)
+  and maps them to integer class indices. 
+* **`adata.obsm["spatial"]`** – Spatial coordinates (N × 2)
 
 The pipeline will automatically:
 
@@ -59,9 +57,9 @@ Example dataset folder:
 
 ```bash
 data/
- ├── 15_processed_all.h5ad
- ├── mouse_brain_section1.h5ad
- └── breast_cancer_blockA.h5ad
+ ├── 151507.h5ad
+ ├── human_breast_cancer.h5ad
+ └── mouse_brain_anterior.h5ad
 ```
 
 ---
@@ -92,7 +90,7 @@ lr = 0.001
 To run only selected datasets, edit the filtering condition:
 
 ```python
-if data_name not in ['15_processed_all']:
+if data_name not in ['151507']:
     continue
 ```
 
@@ -106,21 +104,20 @@ After training completes:
 
   ```
   saved_models/
-   ├── 15_processed_all_model_run_0.pt
-   ├── 15_processed_all_model_run_1.pt
+   ├── 151507_model_run_0.pt
+   ├── 151507_model_run_1.pt
    ...
   ```
 * Evaluation results (accuracy, clustering, etc.): `result.json`
 
   ```json
   {
-      "15_processed_all": [
-          {"ARI": 0.82, "NMI": 0.79, "Silhouette": 0.67},
+      "151507": ["ARI":,...],
+      "human_breast_cancer": ["ARI":,...],
           ...
-      ]
   }
   ```
-* Intermediate subgraph structures (optional): `saved_graph/`
+* Intermediate subgraph structures (optional): `saved_graphs/`
 
 ---
 
@@ -137,7 +134,7 @@ When executed, the program automatically:
 A typical terminal output:
 
 ```
-Start Running 15_processed_all
+Start Running 151507
 [Run 0] Training Epoch 50 | Best Epoch: 37 | Min Loss: 0.0123
 [Run 0] Test ARI: 0.812 | NMI: 0.784
 Results saved to result.json
@@ -174,15 +171,4 @@ To reproduce the results in an end-to-end manner, execute the main script to tra
 
 ```bash
 python main.py
-```
-
-## Citation
-
-```
-@article{wang2025gatorst,
-  title={GatorST: A Versatile Contrastive Meta-Learning Framework for Spatial Transcriptomic Data Analysis},
-  author={Wang, Song and Liu, Yuxi and Zhang, Zhenhao and Ma, Qin and Song, Qianqian and Bian, Jiang},
-  journal={bioRxiv},
-  year={2025}
-}
 ```
