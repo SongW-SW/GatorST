@@ -24,7 +24,7 @@ if __name__ == '__main__':
     parser.add_argument('--tag', type=str, default='default')
     args = parser.parse_args()
 
-    data_folder = "./data/new-data"
+    data_folder = "./data"
     save_results_path = f"./results_revised_{args.tag}.json"
     save_model_folder = f"./saved_model_revised_{args.tag}"
 
@@ -116,4 +116,5 @@ if __name__ == '__main__':
             json.dump(all_results, json_file, indent=4)
 
         print(f"Results saved to {save_results_path}")
+
 
