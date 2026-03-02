@@ -161,10 +161,12 @@ This strategy provides a fair approximation of cross-validation while maintainin
 epochs = 50
 batch_size = 20
 lr = 0.001
-runs = 10
-gcn_depth = 2  # conv1, conv2 in model.py
-hidden_dim = 128
-random_seeds = range(10)
+alpha = 0.5
+gamma = 0.2
+N_way = 5
+M_shot = 5
+Q_query = 5
+tau = 1.0 
 ```
 
 To reproduce the results in an end-to-end manner, execute the main script to train and evaluate across datasets. The seeds are pre-defined in the main.py file.
