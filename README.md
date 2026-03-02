@@ -83,7 +83,6 @@ alpha = 0.5
 N_way = 5
 M_shot = 5
 Q_query = 5
-...
 ```
 
 ---
