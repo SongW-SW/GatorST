@@ -1,5 +1,5 @@
 # GatorST: A Versatile Contrastive Meta-Learning Framework for Spatial Transcriptomic Data Analysis
-![model](https://github.com/zhangzh1328/GatorST/blob/main/GatorST.png)
+![model](https://github.com/SongW-SW/GatorST/GatorST.png)
 
 ## Requirements
 - python : 3.9.12
