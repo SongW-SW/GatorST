@@ -22,7 +22,6 @@
 ├── utils.py            # Utility functions (seed setup, metrics, dropout)
 ├── data/              # Folder for .h5ad input files
 ├── saved_models/      # Folder to save trained models
-├── saved_graphs/       # Folder for cached graphs and subgraphs
 └── result.json        # Evaluation results output
 ```
 
@@ -47,11 +46,10 @@ Each `.h5ad` file should contain:
 
 The pipeline will automatically:
 
-* Construct a **cosine similarity graph** by linking top-k similar neighbors (default degree: 3)
+* Construct a **graph** by linking top-k similar neighbors (default degree: 3)
 * Extract **2-hop subgraphs** per cell with node remapping and edge lists
-* Cache all graph data into `./saved_graph/`
 * Split into **train / validation / test**
-* Produce PyTorch loaders with batched subgraphs
+* Produce PyTorch loaders with subgraphs
 
 Example dataset folder:
 
