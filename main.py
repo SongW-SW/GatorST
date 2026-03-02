@@ -25,8 +25,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data_folder = "./data"
-    save_results_path = f"./result_{args.tag}.json"
-    save_model_folder = f"./saved_model_{args.tag}"
+    save_results_path = f"./result.json"
+    save_model_folder = f"./saved_model"
 
     if not os.path.exists(save_model_folder):
         os.makedirs(save_model_folder)
@@ -116,6 +116,7 @@ if __name__ == '__main__':
             json.dump(all_results, json_file, indent=4)
 
         print(f"Results saved to {save_results_path}")
+
 
 
 
