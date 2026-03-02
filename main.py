@@ -73,7 +73,7 @@ if __name__ == '__main__':
                                 k_neighbors=k_neighbors,
                                 n_pseudo_clusters=n_pseudo_clusters)
 
-        for run in range(1):
+        for run in range(10):
             seed = run
             start_time = time.time()
 
@@ -116,3 +116,4 @@ if __name__ == '__main__':
             json.dump(all_results, json_file, indent=4)
 
         print(f"Results saved to {save_results_path}")
+
