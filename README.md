@@ -115,7 +115,6 @@ After training completes:
           ...
   }
   ```
-* Intermediate subgraph structures (optional): `saved_graphs/`
 
 ---
 
